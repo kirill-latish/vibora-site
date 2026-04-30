@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Vibora Padel Tracker</title>
+  <meta name="description" content="Privacy Policy for Vibora Padel Tracker. Learn what data Vibora collects, how it is stored, and your rights.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" alt="Vibora" width="36" height="36">
+    Vibora
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#screenshots">Screenshots</a></li>
+    <li><a href="index.html#watch">Apple Watch</a></li>
+    <li><a href="index.html#download">Download</a></li>
+    <li><a href="support.html">Support</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── Header ── -->
+<header class="page-header">
+  <h1 class="section-title">Privacy Policy</h1>
+  <p class="section-subtitle center">Last updated: May 1, 2026</p>
+</header>
+
+<!-- ── Content ── -->
+<div class="prose">
+
+  <p>Vibora Padel Tracker ("Vibora", "we", "our", or "the app") is a padel match tracker for iPhone and Apple Watch. This Privacy Policy explains what data Vibora collects, where it is stored, who it is shared with, and the choices you have. We've written it to be as specific as possible: every category below corresponds to actual data the app reads or stores.</p>
+
+  <p>Vibora is published by an independent developer. The data controller for the purposes of GDPR is the developer listed in the <strong>Contact</strong> section at the bottom of this page.</p>
+
+  <h2>1. Data Stored Only on Your Device</h2>
+
+  <p>The following data is processed by Vibora on your iPhone or Apple Watch and is <strong>not</strong> transmitted to our servers:</p>
+  <ul>
+    <li><strong>Microphone audio.</strong> The Apple Watch microphone is used during a match to detect racket-ball contacts. Audio is processed in real time on the watch; no audio recording is saved or transmitted. Only a numeric amplitude value per detected contact is kept as part of the match log.</li>
+    <li><strong>Motion sensor data.</strong> Accelerometer and gyroscope readings are used on-watch to detect shots and are stored on your iPhone as part of the match recording. Raw sensor traces stay local to your devices.</li>
+    <li><strong>Raw HealthKit samples.</strong> Apple HealthKit heart-rate and active-energy samples are read on the watch to measure your session. The raw samples remain inside Apple's HealthKit on your device.</li>
+  </ul>
+
+  <h2>2. Data You Send to Our Servers (Cloud Sync)</h2>
+
+  <p>When you sign in with Apple, Vibora connects to our cloud backend (hosted on <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>) so your matches and profile are available across devices. While you are signed in, the following data is uploaded automatically:</p>
+
+  <h3>2.1 Account &amp; Profile</h3>
+  <ul>
+    <li><strong>Sign in with Apple identifier.</strong> A stable user ID issued by Apple, used to authenticate every backend request.</li>
+    <li><strong>Email address.</strong> If you allow Apple to share it, your email is stored on our authentication record. If you choose <em>Hide My Email</em>, only Apple's private relay address (<code>...@privaterelay.appleid.com</code>) is stored.</li>
+    <li><strong>Profile.</strong> Display name, nickname, avatar (emoji or uploaded photo), preferred hand, skill level, public-profile flag, and your selected racquet brand/model.</li>
+    <li><strong>Avatar image.</strong> If you upload a profile photo, it is stored as a JPEG in our private avatars storage bucket under a path keyed to your user ID.</li>
+  </ul>
+
+  <h3>2.2 Match &amp; Session Data</h3>
+  <p>Each match you record is uploaded to our <code>matches</code> table after it ends (or on the next launch if you were offline). Each row contains:</p>
+  <ul>
+    <li>Team and player names you entered for the match.</li>
+    <li>Set scores, winner, score events, total shot count, and timestamp.</li>
+    <li>Match duration, average heart rate, total active calories, and per-second heart-rate and calorie series, derived from Apple HealthKit. <strong>HR and calorie data leave your device as part of the match record.</strong></li>
+    <li>An <em>is public</em> flag — see §3 below.</li>
+  </ul>
+  <p>Per-shot annotations (your text labels and notes) are stored in a separate <code>shot_annotations</code> table linked to the match.</p>
+
+  <h3>2.3 Roster, Social &amp; Competitions</h3>
+  <ul>
+    <li><strong>Player roster.</strong> Names of partners and opponents you add are stored in our <code>players</code> table under your account.</li>
+    <li><strong>Follows.</strong> If you follow another user, the follower-following pair is stored in our <code>follows</code> table.</li>
+    <li><strong>Competitions.</strong> If you create or join a competition, the competition title, format, dates, club name, and the public coordinates of the venue you selected (from Apple Maps search), plus the list of participants, are stored in our <code>competitions</code> and <code>competition_participants</code> tables. Vibora does <strong>not</strong> read your device GPS — the coordinates stored are for the venue you pick, not for you.</li>
+  </ul>
+
+  <h3>2.4 Subscriptions</h3>
+  <p>If you purchase a Vibora Pro subscription, payment is processed by Apple's StoreKit. We never see your card details. After Apple confirms a transaction, we store the following on our <code>subscriptions</code> and <code>subscription_events</code> tables, keyed to your user ID, in order to validate Pro entitlement and reconcile receipts:</p>
+  <ul>
+    <li>Product identifier (e.g. <code>vibora_pro_monthly</code>), active/inactive flag, expiration date, original transaction ID.</li>
+    <li>Per-event log entries (<code>purchase</code>, <code>renewal</code>, <code>refund</code>, etc.) including transaction ID, price (in cents), currency, and StoreKit environment (sandbox vs. production).</li>
+  </ul>
+
+  <h2>3. Public Matches and the Community Feed</h2>
+
+  <p>By default, every match you sync is private to your account. You can opt in to publish an individual match to the Community feed via the "Publish to Community" sheet in the iPhone app. When a match is published:</p>
+  <ul>
+    <li>Its score, team names, duration, shot count, and the publishing user's profile name and avatar become visible to other Vibora users.</li>
+    <li>Heart-rate and calorie metrics that are part of the match record are also accessible to other users in the published match's detail view.</li>
+  </ul>
+  <p>You can unpublish a match at any time from the same sheet. Competitions and their participants are visible to all signed-in users by design.</p>
+
+  <h2>4. How We Use Your Data</h2>
+  <ul>
+    <li>Authenticate your session and scope every request to your account.</li>
+    <li>Display your match history, statistics, profile, and roster across iPhone and Apple Watch.</li>
+    <li>Provide social features (community feed, competitions, follows) when you opt in.</li>
+    <li>Validate your Vibora Pro entitlement and respond to purchase, renewal, and refund events.</li>
+    <li>Diagnose support requests you submit through the <a href="support.html">Support page</a>.</li>
+  </ul>
+
+  <p>We do <strong>not</strong> use your data for advertising, marketing, profiling, behavioral analytics, or any form of cross-app or cross-website tracking. Vibora contains no advertisements and integrates no third-party analytics, attribution, or advertising SDKs.</p>
+
+  <h2>5. Sharing With Third Parties</h2>
+  <p>We do not sell, rent, or share your personal data for marketing or advertising. Limited sharing happens only with the following processors that are necessary to run the app:</p>
+  <ul>
+    <li><strong>Apple Inc.</strong> — Sign in with Apple authentication, App Store In-App Purchase, HealthKit (on-device only), iCloud Push (notifications). Apple handles your data per the <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a>.</li>
+    <li><strong>Supabase Inc.</strong> — Hosts our authentication, database, and storage layers on AWS infrastructure. Supabase processes data per the <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase Privacy Policy</a>. Database rows are protected by row-level security so users can only access their own data, plus public matches and competition data they participate in.</li>
+  </ul>
+  <p>We may also disclose data if compelled by valid legal process (e.g. a subpoena or court order), or when necessary to protect the safety, rights, or property of users or the developer.</p>
+
+  <h2>6. Data Retention</h2>
+  <p>We retain your account, profile, matches, roster, annotations, follows, competitions, and subscription records for as long as your account is active. If you delete your account (see §8), all rows keyed to your user ID are deleted from our database, and your avatar JPEG is removed from storage. Backups may retain the data for up to 30 days before being overwritten.</p>
+
+  <h2>7. Security</h2>
+  <p>Data is transmitted between your device and Supabase over TLS. At rest, our database and storage buckets are encrypted by Supabase using AWS-managed encryption. Access to production data is restricted to the developer. Authentication tokens are stored in the iOS Keychain on your device.</p>
+
+  <h2>8. Your Rights and Choices</h2>
+  <ul>
+    <li><strong>Access &amp; export.</strong> You can request a copy of all data we hold about you by emailing the address in the <strong>Contact</strong> section.</li>
+    <li><strong>Correction.</strong> You can edit your profile, roster, racquet preferences, and annotations directly in the app. Email us if you need help correcting other fields.</li>
+    <li><strong>Delete cloud data.</strong> Email the address in the <strong>Contact</strong> section requesting account deletion. We will remove your account, profile, matches, roster, annotations, follows, avatar, and subscription history within 30 days.</li>
+    <li><strong>Delete local data.</strong> You can delete all on-device match recordings from the iPhone app's settings.</li>
+    <li><strong>HealthKit.</strong> You can revoke Vibora's HealthKit permissions at any time via the iPhone Settings app → Privacy &amp; Security → Health → Vibora.</li>
+    <li><strong>Microphone &amp; Motion.</strong> You can revoke microphone and motion permissions for the watch app via the Watch app on your iPhone.</li>
+    <li><strong>Sign in with Apple.</strong> You can disconnect Vibora from your Apple ID via Settings → [your name] → Sign in with Apple → Vibora.</li>
+    <li><strong>Hide your matches.</strong> Match records default to private. You can unpublish any previously-published match from its detail screen.</li>
+  </ul>
+  <p>If you are in the EEA, UK, or Switzerland, you have additional rights under GDPR (right to object, right to data portability, right to lodge a complaint with your local supervisory authority). If you are a California resident, you have additional rights under CCPA/CPRA. To exercise any of these rights, email the address in <strong>Contact</strong>.</p>
+
+  <h2>9. International Transfers</h2>
+  <p>Our backend is hosted on AWS infrastructure. Depending on the Supabase region, your data may be processed in the United States or the European Union. Where applicable, transfers from the EEA, UK, or Switzerland rely on Standard Contractual Clauses.</p>
+
+  <h2>10. Children's Privacy</h2>
+  <p>Vibora is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided personal data, contact us and we will delete it.</p>
+
+  <h2>11. HealthKit-Specific Disclosures</h2>
+  <p>Vibora reads heart rate and active energy from Apple HealthKit on the Apple Watch and writes a workout summary back to HealthKit when you finish a match. Aggregated metrics derived from HealthKit (average HR, total calories, HR series, calorie series) are uploaded to our servers as part of each synced match, as described in §2.2. We do not use HealthKit data for advertising, marketing, sharing with data brokers, or behavioral analytics. We do not share HealthKit-derived data with third parties other than the storage processor described in §5.</p>
+
+  <h2>12. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy when the app changes the data it handles. The "Last updated" date at the top of this page reflects the most recent revision. Material changes will be communicated in-app or via the App Store release notes.</p>
+
+  <h2>13. Contact</h2>
+  <p>For privacy questions, data access requests, or account deletion requests, email <a href="mailto:k@lptec.com.ua">k@lptec.com.ua</a> or use our <a href="support.html">Support page</a>.</p>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2026 Vibora Technology. All rights reserved.</span>
+    <ul class="footer-links">
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

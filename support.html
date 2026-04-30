@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Vibora Padel Tracker</title>
+  <meta name="description" content="Get help with Vibora Padel Tracker. Report bugs, request features, or ask questions.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" alt="Vibora" width="36" height="36">
+    Vibora
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#screenshots">Screenshots</a></li>
+    <li><a href="index.html#watch">Apple Watch</a></li>
+    <li><a href="index.html#download">Download</a></li>
+    <li><a href="support.html" aria-current="page">Support</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── Header ── -->
+<header class="page-header">
+  <h1 class="section-title">Support</h1>
+  <p class="section-subtitle center">Have a question, found a bug, or want to request a feature? We'd love to hear from you.</p>
+</header>
+
+<!-- ── Contact Form ── -->
+<div class="support-layout">
+  <form class="contact-form" id="supportForm" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <select id="subject" name="subject" required>
+        <option value="" disabled selected>Choose a topic</option>
+        <option value="Bug Report">Bug Report</option>
+        <option value="Feature Request">Feature Request</option>
+        <option value="General Question">General Question</option>
+        <option value="Account / Subscription">Account / Subscription</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Describe your issue or idea..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+    <div class="form-status" id="formStatus"></div>
+  </form>
+
+  <!-- ── FAQ ── -->
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-item">
+      <summary>How do I pair the Apple Watch app?</summary>
+      <p>Install Vibora on your iPhone and the Watch companion app will install automatically. Open Vibora on both devices and sign in. The Watch app communicates with iPhone via WatchConnectivity — make sure both devices are nearby and Bluetooth is enabled.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I start a match?</summary>
+      <p>Tap the Play button on your iPhone to configure the match: pick your court position, name the players, and choose a scoring rule (Golden Point, One Deuce One Golden, or Star Point). Then tap "Send to Watch" or use the phone scoreboard. On the Watch, choose who serves first and tap Start Match.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What scoring rules are supported?</summary>
+      <p>Vibora supports three official padel scoring rules: Only Golden Point (at deuce, next point wins), One Deuce One Golden (one deuce then golden point), and Star Point. Full tiebreak support with automatic end changes is included.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How does shot detection work?</summary>
+      <p>The Apple Watch uses its accelerometer, gyroscope, and microphone to detect racket-ball contacts during play. After the match, you can see the total shot count, a shot timeline, and per-shot sensor data on your iPhone.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What is Vibora Pro?</summary>
+      <p>Vibora Pro unlocks detailed match analytics, performance insights and trends, shot lab with 3D trajectory, raw data export, cloud sync and backup, and unlimited match history. Available as a monthly or yearly subscription.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I restore my subscription?</summary>
+      <p>Go to the Vibora Pro screen in the app and tap "Restore Purchases." If you're signed in with the same Apple ID, your subscription will be restored automatically.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What are Americano competitions?</summary>
+      <p>Americano is a popular social padel format where players rotate partners across rounds. Vibora lets you create and join Americano tournaments with live leaderboards, score dynamics charts, and round-by-round match results.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How is my health data handled?</summary>
+      <p>Raw HealthKit samples and microphone audio stay on your device. When you sync a match, we upload a summary that includes its average heart rate, total calories, and per-second HR/calorie series alongside the score and shot count, so you can see the same metrics across your iPhone and Watch. We never use this data for advertising, marketing, behavioral analytics, or sharing with data brokers. You can revoke HealthKit access anytime from iPhone Settings &rarr; Privacy &amp; Security &rarr; Health &rarr; Vibora. See our <a href="privacy.html">Privacy Policy</a> for the full list of fields.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I contact support or request account deletion?</summary>
+      <p>Email <a href="mailto:k@lptec.com.ua">k@lptec.com.ua</a> or use the contact form on this page. Account deletion requests (including all cloud-synced matches, profile, roster, and avatar) are processed within 30 days.</p>
+    </details>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2026 Vibora Technology. All rights reserved.</span>
+    <ul class="footer-links">
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/support.js"></script>
+</body>
+</html>
