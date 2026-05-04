@@ -558,57 +558,87 @@ strong, b { font-weight: 500; color: var(--ink); }
 .page-header .section-title { margin-bottom: 0.75rem; }
 .page-header .section-subtitle { margin-bottom: 0; }
 
-/* ── Support form ──────────────────────────────────────── */
+/* ── Support page (mailto contact card + FAQ) ──────────── */
 .support-layout {
   max-width: 720px; margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 3rem) 4rem;
 }
 
-.contact-form {
+.contact-card {
+  display: grid;
+  grid-template-columns: 56px 1fr 24px;
+  align-items: center;
+  gap: 1.25rem;
   background: var(--glass-bg-strong);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-card);
-  padding: 2.25rem;
+  padding: 1.6rem 1.75rem;
   box-shadow: var(--shadow-card);
   margin-bottom: 3rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-.form-group { margin-bottom: 1.25rem; }
-.form-group label {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  color: var(--ink-strong);
-  margin-bottom: 0.5rem;
+.contact-card:hover {
+  border-color: var(--orange-tint);
+  box-shadow: 0 12px 28px rgba(232, 101, 26, 0.18);
+  transform: translateY(-1px);
 }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  font-family: inherit;
-  font-weight: 400;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.7);
-  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--muted-soft); font-weight: 300; }
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.contact-card:focus-visible {
   outline: none;
   border-color: var(--orange);
-  background: var(--surface);
   box-shadow: 0 0 0 4px var(--orange-tint);
 }
-.form-group textarea { min-height: 140px; resize: vertical; }
+.contact-card-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: var(--orange);
+  color: var(--surface);
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-orange-soft);
+}
+.contact-card-body { display: block; min-width: 0; }
+.contact-card-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.35rem;
+}
+.contact-card-email {
+  display: block;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: var(--ink-strong);
+  word-break: break-all;
+}
+.contact-card-meta {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.contact-card-arrow { color: var(--muted-soft); display: inline-flex; }
 
+@media (max-width: 540px) {
+  .contact-card {
+    grid-template-columns: 48px 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  .contact-card-icon { width: 48px; height: 48px; border-radius: 14px; }
+  .contact-card-arrow { display: none; }
+}
+
+/* ── Generic button (kept available; unused on the live support page after
+   the contact form was retired in favour of mailto:). ─────────────────── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 0.5rem;
@@ -624,7 +654,6 @@ strong, b { font-weight: 500; color: var(--ink); }
 .btn-primary {
   background: var(--orange);
   color: var(--surface);
-  width: 100%;
   box-shadow: var(--shadow-orange);
 }
 .btn-primary:hover {
@@ -635,27 +664,6 @@ strong, b { font-weight: 500; color: var(--ink); }
 .btn-primary:disabled {
   opacity: 0.55; cursor: not-allowed; transform: none;
   box-shadow: var(--shadow-orange-soft);
-}
-
-.form-status {
-  margin-top: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9375rem;
-  font-weight: 400;
-  display: none;
-}
-.form-status.success {
-  display: block;
-  background: rgba(34, 197, 94, 0.10);
-  color: #15803d;
-  border: 1px solid rgba(34, 197, 94, 0.20);
-}
-.form-status.error {
-  display: block;
-  background: rgba(239, 68, 68, 0.08);
-  color: #b91c1c;
-  border: 1px solid rgba(239, 68, 68, 0.18);
 }
 
 /* ── FAQ ───────────────────────────────────────────────── */
